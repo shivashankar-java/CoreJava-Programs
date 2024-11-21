@@ -16,7 +16,7 @@ package ControlStatements;
 
 public class IfElseExample {
     public static void main(String[] args) {
-        int number = -5;
+        int number = -6;
         
         
         if (number > 0) {
