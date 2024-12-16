@@ -1,4 +1,6 @@
 package Encapsulation;
+ 
+//Encaspulation code..........
 
 public class Employee {
      private String name;
@@ -40,5 +42,6 @@ class Manager extends Employee{
 		return department;
 	}
 }
+
 
 
