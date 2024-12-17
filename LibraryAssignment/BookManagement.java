@@ -1,4 +1,4 @@
-package pkg.csv;
+package pkg.LibraryAssignment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,29 +29,26 @@ public class BookManagement {
 
         return books;
     }
-
    
     public static boolean removeBookById(String bookId) {
         // Load the books from the CSV file
         List<Book> books = loadBooks();
         
-        // Find the book to remove using its ID
         Optional<Book> bookToRemove = books.stream()
                                            .filter(book -> book.getId().equals(bookId))
                                            .findFirst();
         
         // If the book is found, remove it
         if (bookToRemove.isPresent()) {
-            books.remove(bookToRemove.get()); // Remove the book from the list
-            
+            books.remove(bookToRemove.get());            
             // Save the updated list back to the CSV file
             saveBooks(books);
             
-            // Confirm the removal
+            
             System.out.println("Book removed: " + bookToRemove.get());
             return true;
         } else {
-            // Book not found
+           
             System.err.println("Book not found with ID: " + bookId);
             return false;
         }

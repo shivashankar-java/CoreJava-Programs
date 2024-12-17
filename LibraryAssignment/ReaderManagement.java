@@ -1,4 +1,4 @@
-package pkg.csv;
+package pkg.LibraryAssignment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class ReaderManagement {
             reader.setName(newName);  // Update name
             reader.setEmail(newEmail);  // Update email
             reader.setAge(newAge);  // Update age
-            saveReaders(readers);  // Save the updated list to the file
+            saveReaders(readers);  
             System.out.println("Reader updated: " + reader);
             System.out.print("first :" +readers);
             return true;

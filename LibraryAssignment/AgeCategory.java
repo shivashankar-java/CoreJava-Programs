@@ -1,4 +1,4 @@
-package pkg.csv;
+package pkg.LibraryAssignment;
 
 public class AgeCategory {
     private String id;
@@ -32,6 +32,11 @@ public class AgeCategory {
         return new String[] { id, categoryName };
     }
 
+	@Override
+	public String toString() {
+		return "AgeCategory [id=" + id + ", categoryName=" + categoryName + "]";
+	}
+	
 }
 
 

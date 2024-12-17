@@ -1,4 +1,4 @@
-package pkg.csv;
+package pkg.LibraryAssignment;
 
 public class Rack {
     private String id;
@@ -28,6 +28,13 @@ public class Rack {
 	public String[] toCSVRow() {
         return new String[] { id, location };
     }
+
+	@Override
+	public String toString() {
+		return "Rack [id=" + id + ", location=" + location + "]";
+	}
+	
+	
 }
    
 

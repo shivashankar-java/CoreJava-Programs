@@ -1,4 +1,4 @@
-package pkg.csv;
+package pkg.LibraryAssignment;
 
 public class Librarian {
     private String id;
@@ -38,8 +38,11 @@ public class Librarian {
 	 public String[] toCSVRow() {
 	        return new String[] { id, name, email };
 	    }
-	 public void removeBook(String Title) {
+
+	@Override
+	public String toString() {
+		return "Librarian [id=" + id + ", name=" + name + ", email=" + email + "]";
+	}
 	
-	 }
 }
 
