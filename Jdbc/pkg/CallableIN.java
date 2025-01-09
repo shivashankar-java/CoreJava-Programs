@@ -17,7 +17,7 @@ public class CallableIN {
 		
 		try(Connection connection= DriverManager.getConnection(url, username, password);
 		CallableStatement cstmt = connection.prepareCall("{CALL getDetailsByempId(?)}")){	
-	    cstmt.setInt(1, 102);
+	    cstmt.setInt(1, 101);
 		
 		ResultSet rs=cstmt.executeQuery();
 		
@@ -30,5 +30,4 @@ public class CallableIN {
 			e.printStackTrace();
 		}
 	}
-
 }
