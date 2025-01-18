@@ -28,10 +28,9 @@ public class BatchProcessing1 {
     	 for(int result: results) {
     		 System.out.println("Rows affected:"+ results);
     		
-    	 }
-    	     	 
+    	 }    	     	 
      }catch(Exception e) {
     	e.printStackTrace();
      }
- }
+  }
 }

@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 public class Batchprocessing2 {
-
 	public static void main(String[] args) {
 		
 		        String url = "jdbc:mysql://localhost:3306/jdbc";
@@ -19,16 +18,16 @@ public class Batchprocessing2 {
 
 		            conn.setAutoCommit(false);
 
-		            pstmt.setInt(1, 4);
-		            pstmt.setString(2, "rahul");
+		            pstmt.setInt(1, 7);
+		            pstmt.setString(2, "Asha");
 		            pstmt.addBatch();
 
-		            pstmt.setInt(1, 5);
-		            pstmt.setString(2, "Eva");
+		            pstmt.setInt(1, 8);
+		            pstmt.setString(2, "Shami");
 		            pstmt.addBatch();
 
-		            pstmt.setInt(1, 6);
-		            pstmt.setString(2, "james");
+		            pstmt.setInt(1, 9);
+		            pstmt.setString(2, "Virat");
 		            pstmt.addBatch();
 
 		            int[] results = pstmt.executeBatch();
