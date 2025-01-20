@@ -1,48 +1,49 @@
 package Rowset;
 
+import javax.sql.rowset.CachedRowSet;
+import javax.sql.rowset.RowSetFactory;
+import javax.sql.rowset.RowSetProvider;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import javax.sql.rowset.CachedRowSet;
-import javax.sql.rowset.RowSetProvider;
+import java.sql.SQLException;
 
 public class CachedRowSetEx {
-    public static void main(String[] args) {
-        Connection connection = null;
+    public static void main(String[] args) {       
         try {
-            String url = "jdbc:mysql://localhost:3306/dmantz";
-            String username = "root";
-            String password = "root";
-            connection = DriverManager.getConnection(url, username, password);
+        	RowSetFactory rsf =RowSetProvider.newFactory();
+            CachedRowSet crs=rsf.createCachedRowSet();
+            
+            crs.setUrl("jdbc:mysql://localhost:3306/dmantz"); 
+            crs.setUsername("root");                      
+            crs.setPassword("root");                 
+            crs.setCommand("SELECT * FROM employees");            
+            crs.execute();                                         
 
-            connection.setAutoCommit(false);
-
-            CachedRowSet crs = RowSetProvider.newFactory().createCachedRowSet();
-            crs.setUrl(url);
-            crs.setUsername(username);
-            crs.setPassword(password);
-
-            crs.setCommand("SELECT id, name, salary FROM employees");
-            crs.execute();
-
+            System.out.println("Data Retrieved:");
             while (crs.next()) {
-                System.out.println("ID: " + crs.getInt("id"));
-                System.out.println("Name: " + crs.getString("name"));
-                System.out.println("Salary: " + crs.getDouble("salary"));
+                int id = crs.getInt("ID");                        
+                String name = crs.getString("Name");               
+                double salary = crs.getDouble("Salary");           
+                System.out.println("ID: " + id);
+                System.out.println("Name: " + name);
+                System.out.println("Salary: " + salary);
             }
 
-            crs.absolute(1); 
-            crs.updateDouble("salary", 30000); 
-            crs.updateRow();
+            System.out.println("\nUpdating Data...");
+            crs.beforeFirst(); 
+            if (crs.next()) { 
+            	crs.absolute(2);
+            	crs.updateString("name", "Mahesh"); 
+            	crs.updateRow(); 
+            }
 
-            crs.acceptChanges(connection);
+          Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dmantz","root","root");
+           conn.setAutoCommit(false); 
+            crs.acceptChanges(conn);
+            System.out.println("Data updated successfully.");
 
-            System.out.println("Salary updated successfully");
-
-            connection.setAutoCommit(true);
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } 
     }
 }
-

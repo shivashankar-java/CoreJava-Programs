@@ -1,25 +1,35 @@
 package Rowset;
 
 import javax.sql.rowset.JdbcRowSet;
+import javax.sql.rowset.RowSetFactory;
 import javax.sql.rowset.RowSetProvider;
 
 public class JdbcRowSetEx {
     public static void main(String[] args) {
         try {
-            JdbcRowSet jrs = RowSetProvider.newFactory().createJdbcRowSet();
+            RowSetFactory rsf =RowSetProvider.newFactory();
+            JdbcRowSet rs=rsf.createJdbcRowSet();
 
-            jrs.setUrl("jdbc:mysql://localhost:3306/dmantz");
-            jrs.setUsername("root");
-            jrs.setPassword("root");
+            rs.setUrl("jdbc:mysql://localhost:3306/dmantz");
+            rs.setUsername("root");
+            rs.setPassword("root");
 
-            jrs.setCommand("SELECT id, name, salary FROM employees");
-            jrs.execute();
+            rs.setCommand("SELECT id, name, salary FROM employees");
+            rs.execute();
 
-            while (jrs.next()) {
-                System.out.println("ID: " + jrs.getInt("id"));
-                System.out.println("Name: " + jrs.getString("name"));
-                System.out.println("Salary: " + jrs.getDouble("salary"));
+            System.out.println("\nForward Direction");
+            while (rs.next()) {
+                System.out.println("ID: " + rs.getInt("id"));
+                System.out.println("Name: " + rs.getString("name"));
+                System.out.println("Salary: " + rs.getDouble("salary"));
             }
+            
+            System.out.println("\nBackward Direction");
+            while(rs.previous()) {
+            	System.out.println("ID: " + rs.getInt("id"));
+                System.out.println("Name: " + rs.getString("name"));
+                System.out.println("Salary: " + rs.getDouble("salary"));
+            }                               
         } catch (Exception e) {
             e.printStackTrace();
         }
