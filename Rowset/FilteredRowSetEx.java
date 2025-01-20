@@ -1,7 +1,6 @@
 package Rowset;
 
 import javax.sql.rowset.FilteredRowSet;
-import javax.sql.rowset.Predicate;
 import javax.sql.rowset.RowSetProvider;
 import java.sql.SQLException;
 
