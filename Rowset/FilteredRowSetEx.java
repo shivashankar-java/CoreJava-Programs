@@ -24,7 +24,7 @@ public class FilteredRowSetEx {
                 String name = frs.getString("name");
                 double salary = frs.getDouble("salary");
 
-                System.out.println("ID: " + id + ", Name: " + name + ", Salary: " + salary);
+           System.out.println("ID: " + id + ", Name: " + name + ", Salary: " + salary);
             }
 
         } catch (SQLException e) {
